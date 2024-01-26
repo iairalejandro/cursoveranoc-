@@ -44,6 +44,33 @@ public:
 			tam = 1;
 		}
 	}
+
+	bool isRun = true; char tecla = 'q';
+	while (isRun) {
+		std::cout << "Ingrese una tecla(W,A,S,D) y 'Q' para salir: ";
+		std::cin >> tecla;
+		switch (tecla) {
+			case 'w';
+			case 'W': std::cout << "Apreto W";
+				break;
+			case 'a';
+			case 'A': std::cout << "Apreto A";
+				break;
+			case 's';
+			case 'S': std::cout << "Apreto S";
+				break;
+			case 'd';
+			case 'D': std::cout << "Apreto D";
+				break;
+			case 'q';
+			case 'Q': std::cout << "Apreto Q";
+				break;
+			default: std::cout << "Ingrese una tecla valida...";
+
+
+
+		}
+	}
 };
 
 class cTablero {
