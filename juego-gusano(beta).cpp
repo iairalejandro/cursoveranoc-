@@ -197,11 +197,9 @@ public:
     }
 
     void moverGusano(char direccion, int f, int c) {
-        // Obtener la posición actual del gusano
         int nueva_pos_i = pos_i[0];
         int nueva_pos_j = pos_j[0];
 
-        // Actualizar la posición según la dirección
         switch (direccion) {
             case 'w':
             case 'W':
@@ -220,14 +218,11 @@ public:
                 nueva_pos_j++;
                 break;
             default:
-                // Si la dirección no es válida, no hacer nada
                 cout << "NO ES UNA TECLA VALIDA, INTENTELO NUEVAMENTE..." << endl;
                 return;
         }
 
-        // Actualizar la posición del gusano si está dentro de los límites del tablero
         if (nueva_pos_i >= 0 && nueva_pos_i < f && nueva_pos_j >= 0 && nueva_pos_j < c) {
-            // Actualizar la posición del gusano
             pos_i[0] = nueva_pos_i;
             pos_j[0] = nueva_pos_j;
         }
@@ -289,7 +284,6 @@ public:
 
     void moverGusano(char direccion) {
         miGusano.moverGusano(direccion, f, c);
-        // Actualizar la matriz del tablero con la nueva posición del gusano
         miMatriz[miGusano.pos_i[0]][miGusano.pos_j[0]] = miGusano.simbolo;
     }
 
@@ -325,3 +319,4 @@ int main()
     return 0;
 
 }
+
