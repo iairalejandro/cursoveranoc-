@@ -161,7 +161,7 @@ public:
 
     void eliminar() {
         miGusano.eliminar();
-        miMatriz[miGusano.pos_i[0]][miGusano.pos_j[0]] = ' ';
+        miMatriz[miGusano.pos_i[0]][miGusano.pos_j[0]] = '_';
     }
 
 };
