@@ -22,17 +22,38 @@ public:
 
 };
 
+class cFrutaPequena : public cFruta {
+public:
+    cFrutaPequena() {
+        car_fruta = 'P';
+    }
 
-// nueva clase frutaaaa
-/*
-
-class cFrutaEspecial{
-
-
-
+    int getPuntos() {
+        return 1;
+    }
 };
 
-*/
+class cFrutaMediana : public cFruta {
+public:
+    cFrutaMediana() {
+        car_fruta = 'M';
+    }
+
+    int getPuntos() {
+        return 3;
+    }
+};
+
+class cFrutaGrande : public cFruta {
+public:
+    cFrutaGrande() {
+        car_fruta = 'G';
+    }
+
+    int getPuntos() {
+        return 5;
+    }
+};
 
 
 class cGusano {
@@ -167,16 +188,28 @@ public:
 };
 
 
-
 int main()
 {
     cTablero miTablero(10, 10);
     miTablero.llenarMatriz('_');
     miTablero.printMatriz();
     std::cout << std::endl;
-    miTablero.generarFruta();
+
+    cFrutaPequena miFrutaPequena;
+    miFrutaPequena.crearFruta(10, 10);
+    miTablero.miMatriz[miFrutaPequena.pos_i][miFrutaPequena.pos_j] = miFrutaPequena.car_fruta;
+
+    cFrutaMediana miFrutaMediana;
+    miFrutaMediana.crearFruta(10, 10);
+    miTablero.miMatriz[miFrutaMediana.pos_i][miFrutaMediana.pos_j] = miFrutaMediana.car_fruta;
+
+    cFrutaGrande miFrutaGrande;
+    miFrutaGrande.crearFruta(10, 10);
+    miTablero.miMatriz[miFrutaGrande.pos_i][miFrutaGrande.pos_j] = miFrutaGrande.car_fruta;
+
     miTablero.printMatriz();
     std::cout << std::endl;
+
     miTablero.generarGusano();
     miTablero.printMatriz();
 
@@ -196,5 +229,4 @@ int main()
     }
     
     return 0;
-
 }
