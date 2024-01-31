@@ -110,12 +110,13 @@ public:
             pos_i[0] = nueva_pos_i;
             pos_j[0] = nueva_pos_j;
         }
+
     }
 
 
     void eliminar() {
-        int *antPos_i = 0;
-        int *antPos_j = 0;
+        int* antPos_i = nullptr;
+        int* antPos_j = nullptr;
         delete[] antPos_i;
         delete[] antPos_j;
 
@@ -129,6 +130,9 @@ public:
     int c;
     char** miMatriz;
     cFruta miFruta;
+    cFrutaPequena miFrutaPequena;
+    cFrutaMediana miFrutaMediana;
+    cFrutaGrande miFrutaGrande;
     cGusano miGusano;
 
 public:
@@ -170,6 +174,21 @@ public:
         miMatriz[miFruta.pos_i][miFruta.pos_j] = miFruta.car_fruta;
     }
 
+    void generarFrutaP() {
+        miFrutaPequena.crearFruta(10, 10);
+        miMatriz[miFrutaPequena.pos_i][miFrutaPequena.pos_j] = miFrutaPequena.car_fruta;
+    }
+
+    void generarFrutaM() {
+        miFrutaMediana.crearFruta(10, 10);
+        miMatriz[miFrutaMediana.pos_i][miFrutaMediana.pos_j] = miFrutaMediana.car_fruta;
+    }
+
+    void generarFrutaG() {
+        miFrutaGrande.crearFruta(10, 10);
+        miMatriz[miFrutaGrande.pos_i][miFrutaGrande.pos_j] = miFrutaGrande.car_fruta;
+    }
+
     void generarGusano() {
         miGusano.crearGusano(f, c);
         miMatriz[miGusano.pos_i[0]][miGusano.pos_j[0]] = miGusano.simbolo;
@@ -195,23 +214,15 @@ int main()
     miTablero.printMatriz();
     std::cout << std::endl;
 
-    cFrutaPequena miFrutaPequena;
-    miFrutaPequena.crearFruta(10, 10);
-    miTablero.miMatriz[miFrutaPequena.pos_i][miFrutaPequena.pos_j] = miFrutaPequena.car_fruta;
-
-    cFrutaMediana miFrutaMediana;
-    miFrutaMediana.crearFruta(10, 10);
-    miTablero.miMatriz[miFrutaMediana.pos_i][miFrutaMediana.pos_j] = miFrutaMediana.car_fruta;
-
-    cFrutaGrande miFrutaGrande;
-    miFrutaGrande.crearFruta(10, 10);
-    miTablero.miMatriz[miFrutaGrande.pos_i][miFrutaGrande.pos_j] = miFrutaGrande.car_fruta;
-
     miTablero.printMatriz();
     std::cout << std::endl;
 
     miTablero.generarGusano();
     miTablero.printMatriz();
+
+    miTablero.generarFrutaP();
+    miTablero.generarFrutaM();
+    miTablero.generarFrutaG();
 
     bool isRun = true;
     char tecla;
@@ -225,8 +236,9 @@ int main()
             miTablero.moverGusano(tecla);
             miTablero.printMatriz();
             miTablero.eliminar();
+
         }
     }
-    
+
     return 0;
 }
