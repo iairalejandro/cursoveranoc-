@@ -93,3 +93,14 @@ int main()
    
 
 }
+void llenarNum(int f, int c) {
+    const int numNumeros = f * c / 3; // Cambia este valor según la cantidad de números que desees
+    for (int i = 0; i < numNumeros; ++i) {
+        int num_i = rand() % f;
+        int num_j = rand() % c;
+        if (miMatriz[num_i][num_j] == '_') {
+            int num = rand() % 9 + '1';
+            miMatriz[num_i][num_j] = num;
+        }
+    }
+}
