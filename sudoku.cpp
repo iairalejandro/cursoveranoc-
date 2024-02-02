@@ -12,10 +12,6 @@ public:
 		num = ' 0 ';
 	}
 
-	void insertarNum(int num_f, int num_c) {
-		pos_i = std::rand() % num_f;
-		pos_j = std::rand() % num_c;
-	}
 };
 
 
@@ -65,22 +61,20 @@ public:
 	}
 
 	void llenarNum(int f, int c) {
-
-		for (int i = 0; i < f; ++i) {
-			for (int j = 0; j < c; ++j) {
+		const int numNumeros = f * c / 6;
+		for (int i = 0; i < numNumeros; ++i) {
+			int num_i = rand() % f;
+			int num_j = rand() % c;
+			if (miMatriz[num_i][num_j] == '_') {
 				int num = rand() % 9 + '1';
-				miMatriz[i][j] = num;
+				miMatriz[num_i][num_j] = num;
 			}
 		}
 	}
 
-	void generarNum() {
-		numRand.insertarNum(f, c);
-		miMatriz[numRand.pos_i][numRand.pos_j] = numRand.num;
-	}
+
 
 };
-
 
 
 int main()
@@ -88,19 +82,7 @@ int main()
 	Tablero miTablero(9, 9);
 	miTablero.llenarMatriz('_');
 	miTablero.llenarNum(9,9);
-	miTablero.generarNum();
 	miTablero.printMatriz();
    
 
-}
-void llenarNum(int f, int c) {
-    const int numNumeros = f * c / 3; // Cambia este valor según la cantidad de números que desees
-    for (int i = 0; i < numNumeros; ++i) {
-        int num_i = rand() % f;
-        int num_j = rand() % c;
-        if (miMatriz[num_i][num_j] == '_') {
-            int num = rand() % 9 + '1';
-            miMatriz[num_i][num_j] = num;
-        }
-    }
 }
